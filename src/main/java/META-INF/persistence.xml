@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="todo-app">
+		<class>com.example.demo.model.Actor</class>
+		<class>com.example.demo.model.Address</class>
+		<class>com.example.demo.model.Category</class>
+		<class>com.example.demo.model.City</class>
+		<class>com.example.demo.model.Country</class>
+		<class>com.example.demo.model.Customer</class>
+		<class>com.example.demo.model.Film</class>
+		<class>com.example.demo.model.FilmActor</class>
+		<class>com.example.demo.model.FilmActorPK</class>
+		<class>com.example.demo.model.FilmCategory</class>
+		<class>com.example.demo.model.FilmCategoryPK</class>
+		<class>com.example.demo.model.FilmText</class>
+		<class>com.example.demo.model.Inventory</class>
+		<class>com.example.demo.model.Language</class>
+		<class>com.example.demo.model.Payment</class>
+		<class>com.example.demo.model.Rental</class>
+		<class>com.example.demo.model.Staff</class>
+		<class>com.example.demo.model.Store</class>
+	</persistence-unit>
+</persistence>
