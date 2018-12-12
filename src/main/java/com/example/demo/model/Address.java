@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -16,8 +17,8 @@ public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="address_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="address_id", columnDefinition = "smallint(5)")
 	private int addressId;
 
 	private String address;
@@ -27,7 +28,7 @@ public class Address implements Serializable {
 	private String district;
 
 	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
 	private String phone;
 
@@ -86,11 +87,11 @@ public class Address implements Serializable {
 		this.district = district;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 

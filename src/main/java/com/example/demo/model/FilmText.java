@@ -15,11 +15,12 @@ public class FilmText implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="film_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="film_id", columnDefinition = "smallint(5)")
 	private int filmId;
 
 	@Lob
+	@Column(name="description", columnDefinition = "text")
 	private String description;
 
 	private String title;

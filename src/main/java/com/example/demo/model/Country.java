@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -16,14 +17,14 @@ public class Country implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="country_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="country_id", columnDefinition = "smallint(5)")
 	private int countryId;
 
 	private String country;
 
 	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
 	//bi-directional many-to-one association to City
 	@OneToMany(mappedBy="country")
@@ -48,11 +49,11 @@ public class Country implements Serializable {
 		this.country = country;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 

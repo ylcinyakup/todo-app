@@ -12,10 +12,10 @@ public class FilmActorPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="actor_id", insertable=false, updatable=false)
+	@Column(name="actor_id", columnDefinition = "smallint(5)")
 	private int actorId;
 
-	@Column(name="film_id", insertable=false, updatable=false)
+	@Column(name="film_id", columnDefinition = "smallint(5)")
 	private int filmId;
 
 	public FilmActorPK() {

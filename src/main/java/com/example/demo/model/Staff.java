@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -16,10 +17,11 @@ public class Staff implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="staff_id")
 	private byte staffId;
 
+	@Column(name="active", columnDefinition = "BIT")
 	private byte active;
 
 	private String email;
@@ -31,11 +33,12 @@ public class Staff implements Serializable {
 	private String lastName;
 
 	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
 	private String password;
 
 	@Lob
+	@Column(name="picture", columnDefinition="blob")
 	private byte[] picture;
 
 	private String username;
@@ -105,11 +108,11 @@ public class Staff implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -18,18 +17,21 @@ public class Film implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="film_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="film_id", columnDefinition = "smallint(5)")
 	private int filmId;
 
 	@Lob
+	@Column(name="description", columnDefinition = "text")
 	private String description;
 
 	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
+	@Column(name="length", columnDefinition = "smallint(5)")
 	private int length;
 
+	@Column(name = "rating" , columnDefinition="ENUM('G','PG','PG-13','R','NC-17')" )
 	private String rating;
 
 	@Temporal(TemporalType.DATE)
@@ -45,8 +47,8 @@ public class Film implements Serializable {
 	@Column(name="replacement_cost")
 	private BigDecimal replacementCost;
 
-	@Column(name="special_features")
-	private Object specialFeatures;
+	@Column(name = "special_features", columnDefinition = "set('Trailers','Commentaries','Deleted Scenes','Behind the Scenes')")
+	private String specialFeatures;
 
 	private String title;
 
@@ -91,11 +93,11 @@ public class Film implements Serializable {
 		this.description = description;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 
@@ -147,11 +149,11 @@ public class Film implements Serializable {
 		this.replacementCost = replacementCost;
 	}
 
-	public Object getSpecialFeatures() {
+	public String getSpecialFeatures() {
 		return this.specialFeatures;
 	}
 
-	public void setSpecialFeatures(Object specialFeatures) {
+	public void setSpecialFeatures(String specialFeatures) {
 		this.specialFeatures = specialFeatures;
 	}
 

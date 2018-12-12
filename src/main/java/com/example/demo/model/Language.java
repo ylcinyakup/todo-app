@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -16,13 +17,14 @@ public class Language implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="language_id")
 	private byte languageId;
 
-	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	@Column(name="last_update", insertable=false, updatable=false)
+	private Date lastUpdate;
 
+	@Column(name="last_update", columnDefinition="char")
 	private String name;
 
 	//bi-directional many-to-one association to Film
@@ -44,11 +46,11 @@ public class Language implements Serializable {
 		this.languageId = languageId;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 

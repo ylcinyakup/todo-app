@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -16,8 +17,8 @@ public class Actor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="actor_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="actor_id", columnDefinition = "smallint(5)")
 	private int actorId;
 
 	@Column(name="first_name")
@@ -27,7 +28,7 @@ public class Actor implements Serializable {
 	private String lastName;
 
 	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="actor")
@@ -60,11 +61,11 @@ public class Actor implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 

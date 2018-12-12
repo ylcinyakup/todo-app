@@ -4,7 +4,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.sql.Timestamp;
 
 
 /**
@@ -17,14 +16,14 @@ public class Payment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="payment_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="payment_id", columnDefinition = "smallint(5)")
 	private int paymentId;
 
 	private BigDecimal amount;
 
 	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="payment_date")
@@ -64,11 +63,11 @@ public class Payment implements Serializable {
 		this.amount = amount;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 

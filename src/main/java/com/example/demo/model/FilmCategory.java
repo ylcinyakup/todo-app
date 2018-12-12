@@ -1,8 +1,9 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 
 /**
@@ -19,16 +20,16 @@ public class FilmCategory implements Serializable {
 	private FilmCategoryPK id;
 
 	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
 	//bi-directional many-to-one association to Category
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="category_id")
+	@JoinColumn(name="category_id", insertable=false, updatable=false)
 	private Category category;
 
 	//bi-directional many-to-one association to Film
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="film_id")
+	@JoinColumn(name="film_id", insertable=false, updatable=false)
 	private Film film;
 
 	public FilmCategory() {
@@ -42,11 +43,11 @@ public class FilmCategory implements Serializable {
 		this.id = id;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 

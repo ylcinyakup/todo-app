@@ -3,7 +3,6 @@ package com.example.demo.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
-import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -17,12 +16,12 @@ public class Rental implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="rental_id")
 	private int rentalId;
 
 	@Column(name="last_update")
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="rental_date")
@@ -62,11 +61,11 @@ public class Rental implements Serializable {
 		this.rentalId = rentalId;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 
