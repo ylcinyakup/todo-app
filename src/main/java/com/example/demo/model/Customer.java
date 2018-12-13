@@ -18,7 +18,7 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="customer_id", columnDefinition = "smallint(5)")
-	private int customerId;
+	private Long customerId;
 
 	@Column(name="active", columnDefinition = "BIT")
 	private byte active;
@@ -59,11 +59,11 @@ public class Customer implements Serializable {
 	public Customer() {
 	}
 
-	public int getCustomerId() {
+	public Long getCustomerId() {
 		return this.customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 
