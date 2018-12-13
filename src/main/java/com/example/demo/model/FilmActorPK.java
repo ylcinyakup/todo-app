@@ -13,23 +13,23 @@ public class FilmActorPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="actor_id", columnDefinition = "smallint(5)")
-	private int actorId;
+	private Long actorId;
 
 	@Column(name="film_id", columnDefinition = "smallint(5)")
-	private int filmId;
+	private Long filmId;
 
 	public FilmActorPK() {
 	}
-	public int getActorId() {
+	public Long getActorId() {
 		return this.actorId;
 	}
-	public void setActorId(int actorId) {
+	public void setActorId(Long actorId) {
 		this.actorId = actorId;
 	}
-	public int getFilmId() {
+	public Long getFilmId() {
 		return this.filmId;
 	}
-	public void setFilmId(int filmId) {
+	public void setFilmId(Long filmId) {
 		this.filmId = filmId;
 	}
 
@@ -49,8 +49,8 @@ public class FilmActorPK implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + this.actorId;
-		hash = hash * prime + this.filmId;
+		hash = hash * prime + this.actorId.intValue();
+		hash = hash * prime + this.filmId.intValue();
 		
 		return hash;
 	}

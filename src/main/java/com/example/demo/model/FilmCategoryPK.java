@@ -13,17 +13,17 @@ public class FilmCategoryPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="film_id", columnDefinition = "smallint(5)")
-	private int filmId;
+	private Long filmId;
 
 	@Column(name="category_id", columnDefinition = "smallint(5)")
 	private byte categoryId;
 
 	public FilmCategoryPK() {
 	}
-	public int getFilmId() {
+	public Long getFilmId() {
 		return this.filmId;
 	}
-	public void setFilmId(int filmId) {
+	public void setFilmId(Long filmId) {
 		this.filmId = filmId;
 	}
 	public byte getCategoryId() {
@@ -49,7 +49,7 @@ public class FilmCategoryPK implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + this.filmId;
+		hash = hash * prime + this.filmId.intValue();
 		hash = hash * prime + ((int) this.categoryId);
 		
 		return hash;

@@ -19,7 +19,7 @@ public class Country implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="country_id", columnDefinition = "smallint(5)")
-	private int countryId;
+	private Long countryId;
 
 	private String country;
 
@@ -33,11 +33,11 @@ public class Country implements Serializable {
 	public Country() {
 	}
 
-	public int getCountryId() {
+	public Long getCountryId() {
 		return this.countryId;
 	}
 
-	public void setCountryId(int countryId) {
+	public void setCountryId(Long countryId) {
 		this.countryId = countryId;
 	}
 

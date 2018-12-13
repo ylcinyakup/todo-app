@@ -17,8 +17,8 @@ public class Rental implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="rental_id")
-	private int rentalId;
+	@Column(name="rental_id", columnDefinition = "int(11)")
+	private Long rentalId;
 
 	@Column(name="last_update")
 	private Date lastUpdate;
@@ -53,11 +53,11 @@ public class Rental implements Serializable {
 	public Rental() {
 	}
 
-	public int getRentalId() {
+	public Long getRentalId() {
 		return this.rentalId;
 	}
 
-	public void setRentalId(int rentalId) {
+	public void setRentalId(Long rentalId) {
 		this.rentalId = rentalId;
 	}
 

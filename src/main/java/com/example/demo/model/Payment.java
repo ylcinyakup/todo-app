@@ -18,7 +18,7 @@ public class Payment implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="payment_id", columnDefinition = "smallint(5)")
-	private int paymentId;
+	private Long paymentId;
 
 	private BigDecimal amount;
 
@@ -36,7 +36,7 @@ public class Payment implements Serializable {
 
 	//bi-directional many-to-one association to Rental
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="rental_id")
+	@JoinColumn(name="rental_id", columnDefinition = "int(11)")
 	private Rental rental;
 
 	//bi-directional many-to-one association to Staff
@@ -47,11 +47,11 @@ public class Payment implements Serializable {
 	public Payment() {
 	}
 
-	public int getPaymentId() {
+	public Long getPaymentId() {
 		return this.paymentId;
 	}
 
-	public void setPaymentId(int paymentId) {
+	public void setPaymentId(Long paymentId) {
 		this.paymentId = paymentId;
 	}
 

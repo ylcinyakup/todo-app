@@ -26,7 +26,6 @@ public class TodoAppApplicationTests {
 	public void findAllCustomerTest() {
 		
 		List<Customer> customers = customerRepository.findAll();
-		System.out.println(customers.size());
 		assertEquals("Customer size not match",599, customers.size());
 	}
 	
@@ -36,8 +35,7 @@ public class TodoAppApplicationTests {
 		filters.put("customerId", 2);
 		
 		List<Customer> customerList = customerRepository.getCustomers(filters);
-		System.out.println(customerList.get(0).getFirstName());
-		assertEquals("Customer size not match","PATRICIA", customerList.get(0).getFirstName());
+		assertEquals("Customer Name not match","PATRICIA", customerList.get(0).getFirstName());
 	}
 
 }

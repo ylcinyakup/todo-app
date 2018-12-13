@@ -19,7 +19,7 @@ public class Film implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="film_id", columnDefinition = "smallint(5)")
-	private int filmId;
+	private Long filmId;
 
 	@Lob
 	@Column(name="description", columnDefinition = "text")
@@ -77,11 +77,11 @@ public class Film implements Serializable {
 	public Film() {
 	}
 
-	public int getFilmId() {
+	public Long getFilmId() {
 		return this.filmId;
 	}
 
-	public void setFilmId(int filmId) {
+	public void setFilmId(Long filmId) {
 		this.filmId = filmId;
 	}
 

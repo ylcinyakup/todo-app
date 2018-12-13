@@ -19,7 +19,7 @@ public class Actor implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="actor_id", columnDefinition = "smallint(5)")
-	private int actorId;
+	private Long actorId;
 
 	@Column(name="first_name")
 	private String firstName;
@@ -37,11 +37,11 @@ public class Actor implements Serializable {
 	public Actor() {
 	}
 
-	public int getActorId() {
+	public Long getActorId() {
 		return this.actorId;
 	}
 
-	public void setActorId(int actorId) {
+	public void setActorId(Long actorId) {
 		this.actorId = actorId;
 	}
 

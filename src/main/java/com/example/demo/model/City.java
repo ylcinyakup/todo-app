@@ -19,7 +19,7 @@ public class City implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="city_id", columnDefinition = "smallint(5)")
-	private int cityId;
+	private Long cityId;
 
 	private String city;
 
@@ -38,11 +38,11 @@ public class City implements Serializable {
 	public City() {
 	}
 
-	public int getCityId() {
+	public Long getCityId() {
 		return this.cityId;
 	}
 
-	public void setCityId(int cityId) {
+	public void setCityId(Long cityId) {
 		this.cityId = cityId;
 	}
 

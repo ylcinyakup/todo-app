@@ -18,8 +18,8 @@ public class Inventory implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="inventory_id")
-	private int inventoryId;
+	@Column(name="inventory_id", columnDefinition = "mediumint(8)")
+	private Long inventoryId;
 
 	@Column(name="last_update")
 	private Date lastUpdate;
@@ -41,11 +41,11 @@ public class Inventory implements Serializable {
 	public Inventory() {
 	}
 
-	public int getInventoryId() {
+	public Long getInventoryId() {
 		return this.inventoryId;
 	}
 
-	public void setInventoryId(int inventoryId) {
+	public void setInventoryId(Long inventoryId) {
 		this.inventoryId = inventoryId;
 	}
 

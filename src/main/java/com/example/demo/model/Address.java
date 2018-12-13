@@ -19,7 +19,7 @@ public class Address implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="address_id", columnDefinition = "smallint(5)")
-	private int addressId;
+	private Long addressId;
 
 	private String address;
 
@@ -55,11 +55,11 @@ public class Address implements Serializable {
 	public Address() {
 	}
 
-	public int getAddressId() {
+	public Long getAddressId() {
 		return this.addressId;
 	}
 
-	public void setAddressId(int addressId) {
+	public void setAddressId(Long addressId) {
 		this.addressId = addressId;
 	}
 
