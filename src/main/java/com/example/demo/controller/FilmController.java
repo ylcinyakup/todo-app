@@ -22,10 +22,10 @@ import com.example.demo.service.FilmService;
 public class FilmController {
 
 	private static final Logger logger = LoggerFactory.getLogger(FilmController.class);
-	
+
 	@Autowired
 	private FilmService filmService;
-	
+
 	@RequestMapping(value = "/films", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Collection<Film>> getFilms() {
 		logger.info("> getFilms");
@@ -33,7 +33,7 @@ public class FilmController {
 		logger.info("< getFilms");
 		return new ResponseEntity<Collection<Film>>(films, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/films/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Film> getFilm(@PathVariable("id") Long id) {
 		logger.info("> getFilm");
@@ -45,7 +45,7 @@ public class FilmController {
 		logger.info("< getFilm");
 		return new ResponseEntity<Film>(film, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/films", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Film> createFilm(@RequestBody Film film) {
 		logger.info("> createFilm");
@@ -53,7 +53,7 @@ public class FilmController {
 		logger.info("< createFilm");
 		return new ResponseEntity<Film>(savedFilm, HttpStatus.CREATED);
 	}
-	
+
 	@RequestMapping(value = "/films", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Film> updateFilm(@RequestBody Film film) {
 		logger.info("> updateFilm");
@@ -65,7 +65,7 @@ public class FilmController {
 		logger.info("< updateFilm");
 		return new ResponseEntity<Film>(updatedFilm, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/greetings/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Film> deleteFilm(@PathVariable("id") Long id, @RequestBody Film film) {
 		logger.info("> deleteFilm");
