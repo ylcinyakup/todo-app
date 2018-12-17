@@ -36,7 +36,7 @@ public class FilmController {
 	
 	@RequestMapping(value = "/films/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Film> getFilm(@PathVariable("id") Long id) {
-		logger.info("> getFşkn");
+		logger.info("> getFilm");
 		Film film = filmService.findOne(id);
 		if (film == null) {
 			logger.info("< getFilm");
