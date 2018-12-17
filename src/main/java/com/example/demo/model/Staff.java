@@ -3,6 +3,9 @@ package com.example.demo.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 import java.util.List;
 
@@ -44,24 +47,29 @@ public class Staff implements Serializable {
 	private String username;
 
 	//bi-directional many-to-one association to Payment
+	@JsonManagedReference
 	@OneToMany(mappedBy="staff")
 	private List<Payment> payments;
 
 	//bi-directional many-to-one association to Rental
+	@JsonManagedReference
 	@OneToMany(mappedBy="staff")
 	private List<Rental> rentals;
 
 	//bi-directional many-to-one association to Address
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="address_id")
 	private Address address;
 
 	//bi-directional many-to-one association to Store
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="store_id")
 	private Store store;
 
 	//bi-directional many-to-one association to Store
+	@JsonManagedReference
 	@OneToMany(mappedBy="staff")
 	private List<Store> stores;
 

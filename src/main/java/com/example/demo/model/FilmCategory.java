@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 /**
  * The persistent class for the film_category database table.
@@ -23,11 +25,13 @@ public class FilmCategory implements Serializable {
 	private Date lastUpdate;
 
 	//bi-directional many-to-one association to Category
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="category_id", insertable=false, updatable=false)
 	private Category category;
 
 	//bi-directional many-to-one association to Film
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="film_id", insertable=false, updatable=false)
 	private Film film;

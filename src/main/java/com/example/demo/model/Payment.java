@@ -2,6 +2,9 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -30,16 +33,19 @@ public class Payment implements Serializable {
 	private Date paymentDate;
 
 	//bi-directional many-to-one association to Customer
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 
 	//bi-directional many-to-one association to Rental
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="rental_id", columnDefinition = "int(11)")
 	private Rental rental;
 
 	//bi-directional many-to-one association to Staff
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="staff_id")
 	private Staff staff;

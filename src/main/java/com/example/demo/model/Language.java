@@ -3,6 +3,8 @@ package com.example.demo.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 import java.util.List;
 
@@ -28,10 +30,12 @@ public class Language implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to Film
+	@JsonManagedReference
 	@OneToMany(mappedBy="language1")
 	private List<Film> films1;
 
 	//bi-directional many-to-one association to Film
+	@JsonManagedReference
 	@OneToMany(mappedBy="language2")
 	private List<Film> films2;
 

@@ -3,7 +3,16 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 /**
@@ -23,11 +32,13 @@ public class FilmActor implements Serializable {
 	private Date lastUpdate;
 
 	//bi-directional many-to-one association to Actor
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="actor_id", insertable=false, updatable=false)
 	private Actor actor;
 
 	//bi-directional many-to-one association to Film
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="film_id", insertable=false, updatable=false)
 	private Film film;

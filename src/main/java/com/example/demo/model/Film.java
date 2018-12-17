@@ -1,10 +1,26 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 /**
@@ -53,24 +69,29 @@ public class Film implements Serializable {
 	private String title;
 
 	//bi-directional many-to-one association to Language
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="language_id")
 	private Language language1;
 
 	//bi-directional many-to-one association to Language
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="original_language_id")
 	private Language language2;
 
 	//bi-directional many-to-one association to FilmActor
+	@JsonManagedReference
 	@OneToMany(mappedBy="film")
 	private List<FilmActor> filmActors;
 
 	//bi-directional many-to-one association to FilmCategory
+	@JsonManagedReference
 	@OneToMany(mappedBy="film")
 	private List<FilmCategory> filmCategories;
 
 	//bi-directional many-to-one association to Inventory
+	@JsonManagedReference
 	@OneToMany(mappedBy="film")
 	private List<Inventory> inventories;
 

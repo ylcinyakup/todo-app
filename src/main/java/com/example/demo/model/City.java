@@ -3,6 +3,9 @@ package com.example.demo.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 import java.util.List;
 
@@ -27,10 +30,12 @@ public class City implements Serializable {
 	private Date lastUpdate;
 
 	//bi-directional many-to-one association to Address
+	@JsonManagedReference
 	@OneToMany(mappedBy="city")
 	private List<Address> addresses;
 
 	//bi-directional many-to-one association to Country
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="country_id")
 	private Country country;

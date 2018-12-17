@@ -1,10 +1,18 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 /**
@@ -31,6 +39,7 @@ public class Actor implements Serializable {
 	private Date lastUpdate;
 
 	//bi-directional many-to-one association to FilmActor
+	@JsonManagedReference
 	@OneToMany(mappedBy="actor")
 	private List<FilmActor> filmActors;
 

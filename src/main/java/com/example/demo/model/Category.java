@@ -3,6 +3,8 @@ package com.example.demo.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class Category implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to FilmCategory
+	@JsonManagedReference
 	@OneToMany(mappedBy="category")
 	private List<FilmCategory> filmCategories;
 
