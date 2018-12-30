@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -38,16 +39,23 @@ public class FilmController {
 	}
 
 	@RequestMapping(value = "/films", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Collection<Film>> getFilms(
-			@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+	public ResponseEntity<?> getFilms(
+			@RequestParam(value = "page", required = true, defaultValue = "0") int page,
 			@RequestParam(value = "pageSize", required = true, defaultValue = "10") int pageSize,
-			@RequestParam(value = "sortDirection", required = true, defaultValue = "DESC") String sortDirection,
+			@RequestParam(value = "sortDirection", required = true, defaultValue = "ASC") String sortDirection,
 			@RequestParam(value = "sortParameter", required = true, defaultValue = "filmId") String sortParameter) {
 		System.out.println(page);
-		logger.info("> getFilms");
-		Collection<Film> films = filmService.findFilms(page, pageSize, sortDirection, sortParameter);
+		logger.info("> getFilms page {}, pageSize {}, sortDirection {}, sortParameter {}",page,pageSize,sortDirection,sortParameter);
+		Collection<Film> films = filmService.findFilms(page+1, pageSize, sortDirection, sortParameter);
 		logger.info("< getFilms");
-		return new ResponseEntity<Collection<Film>>(films, HttpStatus.OK);
+		
+		HttpHeaders headers = new HttpHeaders();
+        //put total record count into custom X-Result-Count header
+        headers.add("total-films-count", String.valueOf(1000));
+        //allow browser to read X-Result-Count header
+        headers.add("Access-Control-Expose-Headers", "total-films-count");
+		
+		return ResponseEntity.ok().headers(headers).body(films);
 	}
 
 	@RequestMapping(value = "/films/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

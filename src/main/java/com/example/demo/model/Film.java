@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -41,6 +43,7 @@ public class Film implements Serializable {
 	@Column(name="description", columnDefinition = "text")
 	private String description;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name="last_update")
 	private Date lastUpdate;
 
@@ -50,6 +53,7 @@ public class Film implements Serializable {
 	@Column(name = "rating" , columnDefinition="ENUM('G','PG','PG-13','R','NC-17')" )
 	private String rating;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
 	@Temporal(TemporalType.DATE)
 	@Column(name="release_year")
 	private Date releaseYear;
