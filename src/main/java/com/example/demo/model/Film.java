@@ -54,9 +54,8 @@ public class Film implements Serializable {
 	private String rating;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
-	@Temporal(TemporalType.DATE)
 	@Column(name="release_year")
-	private Date releaseYear;
+	private Integer releaseYear;
 
 	@Column(name="rental_duration")
 	private byte rentalDuration;
@@ -142,11 +141,11 @@ public class Film implements Serializable {
 		this.rating = rating;
 	}
 
-	public Date getReleaseYear() {
+	public Integer getReleaseYear() {
 		return this.releaseYear;
 	}
 
-	public void setReleaseYear(Date releaseYear) {
+	public void setReleaseYear(Integer releaseYear) {
 		this.releaseYear = releaseYear;
 	}
 

@@ -20,8 +20,8 @@ public class Category implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="category_id")
-	private byte categoryId;
+	@Column(name="category_id", columnDefinition = "smallint(5)")
+	private Long categoryId;
 
 	@Column(name="last_update")
 	private Date lastUpdate;
@@ -36,11 +36,11 @@ public class Category implements Serializable {
 	public Category() {
 	}
 
-	public byte getCategoryId() {
+	public Long getCategoryId() {
 		return this.categoryId;
 	}
 
-	public void setCategoryId(byte categoryId) {
+	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 

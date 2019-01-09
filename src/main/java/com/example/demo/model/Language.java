@@ -26,7 +26,7 @@ public class Language implements Serializable {
 	@Column(name="last_update", insertable=false, updatable=false)
 	private Date lastUpdate;
 
-	@Column(name="last_update", columnDefinition="char")
+	@Column(name="name", columnDefinition="char(20)")
 	private String name;
 
 	//bi-directional many-to-one association to Film
