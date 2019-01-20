@@ -2,7 +2,6 @@ package com.example.demo;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.model.Customer;
@@ -39,8 +38,8 @@ public class TodoAppApplicationTests {
 	@Test
 	public void findAllFilmsTest() {
 		
-		Collection<Film> films = filmService.findFilms(1,5,"ASC","length");
-		for(Film film : films) {
+		Page<Film> films = filmService.findFilms(1,5,"ASC","length");
+		for(Film film : films.getContent()) {
 			System.out.println(film.getFilmId());
 		}
 	}

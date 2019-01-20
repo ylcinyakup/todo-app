@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -46,16 +47,16 @@ public class FilmController {
 			@RequestParam(value = "sortParameter", required = true, defaultValue = "filmId") String sortParameter) {
 		System.out.println(page);
 		logger.info("> getFilms page {}, pageSize {}, sortDirection {}, sortParameter {}",page,pageSize,sortDirection,sortParameter);
-		Collection<Film> films = filmService.findFilms(page+1, pageSize, sortDirection, sortParameter);
+		Page<Film> pageFilms = filmService.findFilms(page+1, pageSize, sortDirection, sortParameter);
 		logger.info("< getFilms");
 		
 		HttpHeaders headers = new HttpHeaders();
         //put total record count into custom X-Result-Count header
-        headers.add("total-films-count", String.valueOf(1000));
+        headers.add("total-films-count", String.valueOf(pageFilms.getTotalElements()));
         //allow browser to read X-Result-Count header
         headers.add("Access-Control-Expose-Headers", "total-films-count");
 		
-		return ResponseEntity.ok().headers(headers).body(films);
+		return ResponseEntity.ok().headers(headers).body(pageFilms.getContent());
 	}
 
 	@RequestMapping(value = "/films/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

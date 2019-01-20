@@ -53,8 +53,8 @@ public class AuthController {
 	@Autowired
 	private JwtTokenProvider tokenProvider;
 
-	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
+	public ResponseEntity<?> authenticateUser( @RequestBody LoginRequest loginRequest) {
 
 		UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(loginRequest.getUsernameOrEmail(), loginRequest.getPassword());
 
@@ -66,8 +66,8 @@ public class AuthController {
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
 	}
 
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
+	public ResponseEntity<?> registerUser( @RequestBody SignUpRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return new ResponseEntity(new ApiResponse(true, "Username is already taken!"), HttpStatus.BAD_REQUEST);
 		}

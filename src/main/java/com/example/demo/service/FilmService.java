@@ -1,9 +1,8 @@
 package com.example.demo.service;
 
 import java.util.Collection;
-import java.util.List;
 
-import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Page;
 
 import com.example.demo.model.Film;
 
@@ -19,5 +18,5 @@ public interface FilmService {
 
 	void delete(Long id);
 
-	List<Film> findFilms(int page, int size, String sortDirection, String sortParameter);
+	Page<Film> findFilms(int page, int size, String sortDirection, String sortParameter);
 }

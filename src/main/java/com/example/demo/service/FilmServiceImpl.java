@@ -10,6 +10,7 @@ import javax.persistence.NoResultException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -36,15 +37,14 @@ public class FilmServiceImpl implements FilmService {
 	}
 	
 	@Override
-	public List<Film> findFilms(int page, int size, String sortDirection, String sortParameter) {
+	public Page<Film> findFilms(int page, int size, String sortDirection, String sortParameter) {
 		PageRequest request;
 		if(sortDirection.equals("ASC")) {
 			request = PageRequest.of(page - 1, size, Sort.Direction.ASC, sortParameter);
 		}else {
 			request = PageRequest.of(page - 1, size, Sort.Direction.DESC, sortParameter);
-		}
-		
-		return filmRepository.findAll(request).getContent();
+		} 
+		return filmRepository.findAll(request);
 	}
 	
 
